@@ -1,0 +1,1 @@
+"Hi this is sample file to check about the file accessing inbuild property of node.js!"
