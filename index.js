@@ -90,3 +90,54 @@ fs.readFile(`./${filepath}`, "utf-8", (err, data) => {
     }
 })
  
+
+//similarly we can even write a file using nodejs!
+//It is shown below.
+
+// The line 104 is the syntax for fs.writeFile. In the syntax, three arguments are being passed in the 
+// fs.writeFile. The first argument is the name of the new file we are about to create, the second argument is the name
+// of the variable in which the content which is to be written in the new file is already written and the third argument
+// a callback function 
+
+const content = "Hey Im new file written by nodejs"
+
+fs.writeFile("./newfile.txt", content, (err) => {
+    if(err){
+        console.log(err)
+    }else{
+        console.log("file written successfully!")
+    }
+})
+
+//after calling the above piece of code in the terminal, a new file named "newfile.txt" will be opened
+//the name of the new file will be named according to the name we are giving in the syntax of the "fs.writeFile"
+
+//Similarly we can even update a file using nodejs!
+// It is shown below
+
+// Now we are going to add a new content of data of line 118 in the file "newfile.txt" which we have created before
+// using the method updatefile in nodejs
+
+const newContent = "\n new content added to the file!"
+
+fs.appendFile("./newfile.txt", newContent, (err) => {
+    if(err){
+        console.log(err)
+    }else{
+        console.log("new content updated!")
+    }
+})
+
+//Now we will see about deleting a file using nodejs
+
+//In the below piece of code, there is no need of the second argument called content which is there in previous reading,
+// writting and updating methods. so deleting a file using nodejs needs only two arguments which are the file path name
+// and a call back function as shown below.
+
+fs.unlink("./newfile.txt", (err) => {
+    if(err){
+        console.log(err)
+    }else{
+        console.log("file deleted!")
+    }
+})
