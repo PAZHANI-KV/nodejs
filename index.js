@@ -1,6 +1,6 @@
 const fs = require("fs") //This line is for file accessing packages
 // const { config } = require("process")
-
+const os = require("os") //operating sysyem packages
 // console.log("working");
 
 // const sum = (num1, num2) => {
@@ -70,7 +70,7 @@ const fs = require("fs") //This line is for file accessing packages
 //filepath commonly rather than mentioning config.json specifically to use it dynamically for all files. Hence, we have to mention the name 
 //of the file in the terminal while running the code
 
-const [ , , filepath] = process.argv
+const [, , filepath] = process.argv
 
 let config
 
@@ -84,12 +84,12 @@ fs.readFile(`./${filepath}`, "utf-8", (err, data) => {
     } else {
         console.log("file read successfully")
         console.log(typeof (data))
-        config = JSON.parse(data) 
+        config = JSON.parse(data)
         console.log(config)
         console.log("The addition of number is", sum(config.a, config.b))
     }
 })
- 
+
 
 //similarly we can even write a file using nodejs!
 //It is shown below.
@@ -102,9 +102,9 @@ fs.readFile(`./${filepath}`, "utf-8", (err, data) => {
 const content = "Hey Im new file written by nodejs"
 
 fs.writeFile("./newfile.txt", content, (err) => {
-    if(err){
+    if (err) {
         console.log(err)
-    }else{
+    } else {
         console.log("file written successfully!")
     }
 })
@@ -121,9 +121,9 @@ fs.writeFile("./newfile.txt", content, (err) => {
 const newContent = "\n new content added to the file!"
 
 fs.appendFile("./newfile.txt", newContent, (err) => {
-    if(err){
+    if (err) {
         console.log(err)
-    }else{
+    } else {
         console.log("new content updated!")
     }
 })
@@ -135,9 +135,68 @@ fs.appendFile("./newfile.txt", newContent, (err) => {
 // and a call back function as shown below.
 
 fs.unlink("./newfile.txt", (err) => {
-    if(err){
+    if (err) {
         console.log(err)
-    }else{
+    } else {
         console.log("file deleted!")
     }
 })
+
+//We can also read the data of a directory folder using nodejs!
+
+//consider a folder called newfolder and a file called sample.txt inside this new folder!
+//now the following piece of code tells about accessing the data inside the file sample.txt which is inside the folder
+//newfolder by reading the directory of the folder itself!
+
+
+fs.readdir("./newfolder", (err, data) => {
+    if(err){
+        console.log(err)
+}else{
+    console.log(data)
+}
+})
+
+// The above methods are for accessing data in files level using nodejs. We can also be able to access Data
+// in os level using nodejs. for this, line number 3 is mandatory to access the corresponding packages from nodejs.
+
+//os level access
+
+console.log("OS version-----", os.version());
+
+console.log("Free Memory-----", os.freemem());
+
+console.log("Total memory-----", os.totalmem());
+
+console.log("CPU-----", os.cpus());
+
+//date and time functions in os
+
+//In the below piece piece of code, Date.now is a function of os where we can use this function in nodejs to find the current time which 
+// will be displayed in unix form. 
+
+let time = Date.now();
+console.log("Timestamp---:", time);
+
+// Now, the above code's time output is in unix form. So, by using the following function called "toUTCstring" it is 
+// converted Greenwich mean time(GMT) formate as shown below
+
+let date = new Date();
+let utc = date.toUTCString();
+console.log("UTC---:", utc)
+
+//The below two lines are continuation of above two lines of code. The below two lines are used to display the date alone
+// using the function getDate!
+
+let today = date.getDate();
+console.log("DATE---:", today);
+
+// similarly, we can display the month alone using getmonth function!
+
+let month = date.getMonth();
+console.log("MONTH---:", month);
+
+//similarly, year too by using getFullYear function
+
+let year = date.getFullYear();
+console.log("YEAR---:", year)
