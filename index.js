@@ -7,7 +7,7 @@
 //The following three lines depicts get request!
 
  app.get("/", (req, res) => {
-res.send("Hey there, Im working fine!")
+res.send("Hey there, Im working good!")
  })
 
  //In the above three lines of get request code, the first parameter passed is the url and the second parameter is the 
@@ -31,3 +31,9 @@ app.listen(8000, () => console.log("server started in local host 8000!"))
 
 //It will be inconvinient for us to always kill the server manually by pressing ctrl+c. To overcome this inconvinience,
 //there is a package called nodemon. We have to install it.We can check it in package.json file whether it is installed.
+
+//This package of nodemon wont work just being installed! For this, we have to enter "start":"nodemon index.js"
+//in the package.json file inside the scripts which can be seen in package.json file.
+
+//Now on entering npm start, the port will be activated and if any change is done in the content of the page, we need not 
+//to kill the host and restart it.Instead, the server will reload automatically without being killed manually!
