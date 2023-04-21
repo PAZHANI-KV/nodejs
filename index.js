@@ -20,5 +20,14 @@ res.send("Hey there, Im working fine!")
  //Now the above response must be listened somewhere in a server port. Let us now create a port to receive the 
 //  above response to listen it! This step is shown in the below piece of code.
 
+//Here in the below piece of code, two arguments are passed! The first one is the 9000 which is the server port
+//we are assigning to listen to the backend server response.
 
-app.listen(9000, () => console.log("server started in local host 9000!"))
+
+app.listen(8000, () => console.log("server started in local host 8000!"))
+
+// NOTE: In the above piece of Code, press ctrl+c to close the server localhost(eg: localhost:8000) 
+// which is running after executing the above line!
+
+//It will be inconvinient for us to always kill the server manually by pressing ctrl+c. To overcome this inconvinience,
+//there is a package called nodemon. We have to install it.We can check it in package.json file whether it is installed.
