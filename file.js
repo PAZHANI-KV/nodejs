@@ -1,6 +1,6 @@
-const fs = require("fs") //This line is for file accessing packages
+import * as fs from 'fs'//const fs = require("fs") //This line is for file accessing packages
 // const { config } = require("process")
-const os = require("os") //operating sysyem packages
+import * as os from 'os'//const os = require("os") //operating sysyem packages
 // console.log("working");
 
 // const sum = (num1, num2) => {
