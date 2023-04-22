@@ -1,39 +1,27 @@
- import express from "express"; //importing the installed express package to create a server for nodejs
+ //This file have the contents about a task in node!
 
-//Initializing express server as shown below
+ import { timeStamp } from "console";
+import express from "express";
+ import * as fs from 'fs'; //file accessing packages
 
- const app = express()
+ //initialising express server
 
-//The following three lines depicts get request!
+ const app = express();
+ let time = new Date();
+ let datestring = time.toUTCString().slice(0, -4);
+ console.log(datestring)
 
+//  const timestamp = `Last created timestamp: ${datestring}`;
+
+//  fs.writeFile("/", timeStamp)
+
+
+//APIs
  app.get("/", (req, res) => {
-res.send("Hey there, Im working good!")
+    res.send("Hey there,Im working fine!")
  })
 
- //In the above three lines of get request code, the first parameter passed is the url and the second parameter is the 
- //callback function. The call back function contains two parameters namely request(req) and response(res).In the above
- //code, we are sending only response as shown above.
 
- //since app is assigned to express in line 5, we are using the app for all the following operations like 
- //sending request(line 9), listening to the server(line 24), etc,.
+ //set server to listen under port 9000!
 
- //Now the above response must be listened somewhere in a server port. Let us now create a port to receive the 
-//  above response to listen it! This step is shown in the below piece of code.
-
-//Here in the below piece of code, two arguments are passed! The first one is the 9000 which is the server port
-//we are assigning to listen to the backend server response.
-
-
-app.listen(8000, () => console.log("server started in local host 8000!"))
-
-// NOTE: In the above piece of Code, press ctrl+c to close the server localhost(eg: localhost:8000) 
-// which is running after executing the above line!
-
-//It will be inconvinient for us to always kill the server manually by pressing ctrl+c. To overcome this inconvinience,
-//there is a package called nodemon. We have to install it.We can check it in package.json file whether it is installed.
-
-//This package of nodemon wont work just being installed! For this, we have to enter "start":"nodemon index.js"
-//in the package.json file inside the scripts which can be seen in package.json file.
-
-//Now on entering npm start, the port will be activated and if any change is done in the content of the page, we need not 
-//to kill the host and restart it.Instead, the server will reload automatically without being killed manually!
+ app.listen(9000, () => console.log("server started in localhost 9000"))
